@@ -1,0 +1,87 @@
+body {
+  font-family: monospace;
+  background-color: #111;
+  color: #ccc;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  padding: 10px;
+  background-color: #000;
+  border-bottom: 1px solid #444;
+}
+
+.system-info span {
+  margin-right: 15px;
+  color: rgb(87, 198, 87);
+}
+
+.path {
+  margin-top: 5px;
+  font-size: 0.9em;
+  color: rgb(255, 91, 91);
+}
+
+.tabs {
+  margin-top: 10px;
+}
+
+.tabs a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.tabs a:hover {
+  text-decoration: underline;
+}
+
+.tabs a.active {
+  color: rgb(255, 219, 152); /* bright light blue for active */
+  text-decoration: underline;
+}
+
+.tab-content {
+  display: none;
+  padding: 15px;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.table-container {
+  padding: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+table th, table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #333;
+}
+
+table th {
+  background-color: #222;
+  color: rgb(214, 255, 52);
+}
+
+table td a {
+  color: #6cf;
+  text-decoration: none;
+}
+
+table td a:hover {
+  text-decoration: underline;
+}
+
+/* Optional: table row hover effect similar to old style */
+tr:hover {
+  background-color: #222;
+}
