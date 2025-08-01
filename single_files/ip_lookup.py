@@ -1,3 +1,8 @@
+#
+# Downloaded from: https://opbloody.github.io/riots-hub/
+# Created by: BanRioT
+#
+
 import requests
 
 def ip_lookup(ip=None):
