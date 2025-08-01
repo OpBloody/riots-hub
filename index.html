@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BanRioT's Ethical Toolkit</title>
+  <link rel="stylesheet" href="styles.css">
+<style>
+.red-text {
+  color: rgb(255, 27, 27);
+}
+</style>
+</head>
+<body>
+  <div class="header">
+    <div class="system-info">
+      <span><b>Hosts:</b> BanRioT, Jackey</span>
+      <span><b>Total Files:</b> 0</span>
+      <span><b>Datetime:</b> 2025-08-01 13:37:00</span>
+      <span><b>Server IP Address:</b> 0.0.0.0</span>
+    </div>
+    <div class="path"><code>The Hosts disclaim all responsibility for user actions, as well as any damages or misuse related to the provided files or tools. Use at your own risk.</code></div>
+    <div class="tabs">
+      <a class="tab-link active" onclick="showTab('toolkits')">[ Toolkits ]</a>
+      <a class="tab-link" onclick="showTab('files')">[ Files ]</a>
+      <a class="tab-link" onclick="showTab('network')">[ Network ]</a>
+      <a class="tab-link" onclick="showTab('recon')">[ Recon ]</a>
+      <a class="tab-link" onclick="showTab('exploits')">[ Exploits ]</a>
+      <a class="tab-link" onclick="showTab('wordlists')">[ Wordlists ]</a>
+    </div>
+  </div>
+
+  <!-- TOOLKITS TAB -->
+  <div class="tab-content active" id="toolkits">
+    <h1>Toolkits</h1>
+    <p>View all available toolkits we've created.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Size</th>
+          <th>Modified</th>
+          <th>Permissions</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="#">Diamond.zip</a></td>
+          <td>N/a MB</td>
+          <td>2025-08-01</td>
+          <td>Administrator</td>
+          <td><a href="#">[Download]</a></td>
+        </tr>
+        <tr>
+          <td><a href="#">portscanner.py</a></td>
+          <td>N/a KB</td>
+          <td>2025-07-29</td>
+          <td>Administrator</td>
+          <td><a href="#">[Download]</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FILES TAB -->
+  <div class="tab-content" id="files">
+    <h1>Files</h1>
+    <p>This tab could list your raw scripts, documents, licenses, or archives.</p>
+    <p><span class="red-text">There are currently no available File listed.</span></p>
+  </div>
+
+  <!-- NETWORK TAB -->
+  <div class="tab-content" id="network">
+    <h1>Network Tools</h1>
+    <p>Include tools like Wireshark captures, TCP dumpers, or packet sniffers here.</p>
+    <p><span class="red-text">There are currently no available Network Tools listed.</span></p>
+  </div>
+
+  <!-- RECON TAB -->
+  <div class="tab-content" id="recon">
+    <h1>Reconnaissance Tools</h1>
+    <p>Tools for gathering information on targets: WHOIS, DNS lookups, etc.</p>
+    <p><span class="red-text">There are currently no available Reconnaissance Tools listed.</span></p>
+  </div>
+
+  <!-- EXPLOITS TAB -->
+  <div class="tab-content" id="exploits">
+    <h1>Exploit Kits</h1>
+    <p>Payloads, CVE-based exploits, scripts, or Metasploit templates.</p>
+    <p><span class="red-text">There are currently no available exploit kits listed.</span></p>
+  </div>
+
+  <!-- WORDLISTS TAB -->
+  <div class="tab-content" id="wordlists">
+    <h1>Wordlists & Dictionaries</h1>
+    <p>RockYou.txt, SecLists, custom password lists, etc.</p>
+    <p><span class="red-text">There are currently no available Wordlists or Dictionaries listed.</span></p>
+  </div>
+
+  <script>
+    function showTab(id) {
+      const contents = document.querySelectorAll('.tab-content');
+      const links = document.querySelectorAll('.tab-link');
+
+      contents.forEach(c => c.classList.remove('active'));
+      links.forEach(l => l.classList.remove('active'));
+
+      document.getElementById(id).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>
