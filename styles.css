@@ -85,3 +85,19 @@ table td a:hover {
 tr:hover {
   background-color: #222;
 }
+
+.site-footer {
+  background-color: #000;
+  color: #888;
+  font-size: 13px;
+  text-align: center;
+  padding: 15px 10px;
+  border-top: 1px solid #444;
+  margin-top: 40px;
+}
+
+.site-footer .warning {
+  color: red;
+  font-weight: bold;
+}
+
