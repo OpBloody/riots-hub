@@ -1,186 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>BanRioT's Ethical Toolkit</title>
-  <link rel="stylesheet" href="styles.css">
-  <meta property="og:title" content="Riot’s Tool Hub" />
-  <meta property="og:description" content="Download files and tools created by BanRioT & Jackey" />
-  <meta property="og:url" content="https://opbloody.github.io/riots-hub/" />
-  <meta name="theme-color" content="#0f0" />
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASCII Art Website</title>
+<style>
+body {
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    margin: 0;
+    padding: 0;
+}
 
-    .page-container {
-      flex: 1;
-    }
+pre {
+    white-space: pre-wrap; /* preserves spacing but allows inline tags */
+}
+pre span, pre u {
+    display: inline;
+}
 
-    .red-text {
-      color: rgb(255, 27, 27);
-    }
+/* Main panels row */
+.panels {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    max-width: 95%;
+    margin: 20px auto;
+}
 
-    .site-footer {
-      background-color: #000;
-      color: #888;
-      font-size: 13px;
-      text-align: center;
-      padding: 15px 10px;
-      border-top: 1px solid #444;
-    }
+/* Panels styling */
+.panel {
+    background-color: #111;
+    border: 1px solid #555;
+    padding: 10px;
+    overflow: hidden;
+}
 
-    .site-footer .warning {
-      color: red;
-      font-weight: bold;
-    }
-  </style>
+/* Left / Right panels fixed width */
+.panel.discord, .panel.timeline {
+    width: 300px;
+}
+
+/* CENTER ASCII column */
+.ascii-center {
+    flex: 1;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    /* preserve ASCII formatting */
+    white-space: pre;
+    /* center the block itself horizontally */
+    align-items: center;
+}
+
+/* Discord iframe */
+.discord-frame {
+    width: 100%;
+    height: 480px;
+    border: 0;
+}
+
+/* Timeline styling */
+.timeline-item {
+    border-bottom: 1px solid #555;
+    padding: 5px 0;
+}
+.timeline-header {
+    color: #ff4040;
+}
+.timeline-body {
+    color: #aaa;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    font-size: 16px;
+    margin: 20px 0;
+}
+
+/* Make left and right panels sticky */
+.panel.discord,
+.panel.timeline {
+    position: sticky;
+    top: 20px; /* distance from top of viewport */
+    height: fit-content; /* prevent stretching */
+}
+
+/* Colors */
+.white { color: white; }
+.light_blue { color: #55FFFF; }
+.blurple { color: #5555FF; }
+.blue { color: #0000AA; }
+.gray { color: #AAAAAA; }
+.dark_gray { color: #555555; }
+.red { color: #ff3535; }
+.light_red { color: #FF5555; }
+.dark_red { color: #AA0000; }
+.orange { color: #ff9955; }
+.dark { color: #b4b4b4; }
+.light { color: #c72f2f; }
+.lime { color: #00ff73; }
+
+/* Normal link inside ASCII */
+.ascii-center pre a {
+    color: #2db2ff;      /* unclicked / default color */
+    text-decoration: underline; /* optional */
+}
+
+/* Hovered link */
+.ascii-center pre a:hover {
+    color: #207fb6;      /* color when hovered */
+    text-decoration: underline;
+}
+
+/* Clicked / active link */
+.ascii-center pre a:active {
+    color: #144e70;      /* color when clicked */
+    text-decoration: underline;
+}
+
+</style>
+<script>
+function applyColors(id) {
+    let element = document.getElementById(id);
+    if (!element) return;
+
+    // Get the raw text content
+    let content = element.innerHTML;
+
+    // Replace color tags with span
+    content = content.replace(/{(\w+)}/g, '<span class="$1">')
+                     .replace(/{\/(\w+)}/g, '</span>');
+
+    // Replace underline tags
+    content = content.replace(/{underline}/g, '<u>')
+                     .replace(/{\/underline}/g, '</u>');
+
+    element.innerHTML = content;
+}
+
+function applyAllColors() {
+    applyColors("ascii-name");
+    applyColors("ascii-bio");
+}
+</script>
 </head>
-<body>
-  <div class="page-container">
-    <div class="header">
-      <div class="system-info">
-        <span><b>Hosts:</b> BanRioT, Jackey</span>
-        <span><b>Total Files:</b> 5</span>
-        <span><b>Server IP Address:</b> 0.0.0.0</span>
+<body onload="applyAllColors()">
+
+<div class="panels">
+    <!-- LEFT: Discord Embed -->
+    <div class="panel discord">
+      <iframe class="discord-frame" 
+          src="https://discord.com/widget?id=YOUR_SERVER_ID&theme=dark" 
+          allowtransparency="true" 
+          sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+      </iframe>
+    </div>
+
+    <!-- CENTER: ASCII Name + Bio (not a panel) -->
+    <div class="ascii-center">
+        <pre id="ascii-name">
+   {white}┌▄──{/white}{light_blue}───{/light_blue}{blurple}──┐{/blurple}  {white}┌▄──{/white}{light_blue}───{/light_blue}{blurple}──┐{/blurple} {white}┌▄─{/white}{light_blue}─{/light_blue}{blurple}┐{/blurple} {light_blue}┌{/light_blue}{gray}▄─{/gray}{blurple}┐{/blurple}    {white}┌▄───{/white}{light_blue}──{/light_blue}{gray}─{/gray}{blurple}──┐{/blurple} {white}┌▄{/white}{light_blue}─┐{/light_blue} {white}┌▄──{/white}{light_blue}──{/light_blue}{gray}──{/gray}{blurple}─┐{/blurple} {white}┌▄───{/white}{light_blue}──{/light_blue}{blurple}──┐{/blurple}
+   {white}│{/white}{blurple}▓{/blurple}{gray}·{/gray}{blue}┌─{/blue}{blurple}──┐{/blurple}{gray}·{/gray}{blurple}└┐{/blurple} {white}│{/white}{blurple}▓{/blurple}{gray}·{/gray}{blurple}┌──{/blurple}{light_blue}┐{/light_blue}{blurple}▓{/blurple}{gray}·{/gray}{blurple}│{/blurple} {white}│{/white}{blurple}▓{/blurple}{gray}.{/gray}{blurple}▓└{/blurple}{light_blue}┐{/light_blue}{white}│{/white}{blurple}▓{/blurple}{gray}·{/gray}{blurple}│{/blurple}    {white}│{/white}{blurple}▓▓┌──{/blurple}{gray}─{/gray}{light_blue}┐{/light_blue}{gray}·{/gray}{blurple}▓│{/blurple} {white}│{/white}{blurple}▓▓│{/blurple} {white}│{/white}{blurple}▓{/blurple}{gray}·{/gray}{blue}┌─{/blue}{blurple}─{/blurple}{white}┐{/white}{blurple}▓{/blurple}{gray}·{/gray}{blurple}│{/blurple} {white}└{/white}{blurple}──┐{/blurple}{gray}·{/gray}{blurple}▓┌──┘{/blurple}
+   {light_blue}│{/light_blue}{gray}.{/gray}{blurple}▒{/blurple}{blue}│{/blue}{white}┌{/white}{gray}▄{/gray}{white}─{/white}┘{blurple}▒┌{/blurple}{blue}┘{/blue} {light_blue}│{/light_blue}{gray}·{/gray}{blurple}▒└{/blurple}{light_blue}─{/light_blue}{white}─┘{/white}{blurple}▒▒│{/blurple} {light_blue}│{/light_blue}{gray}.{/gray}{blurple}▓│┐{/blurple}{white}└┘{/white}{blurple}▒▒│{/blurple}    {light_blue}│{/light_blue}{gray}·{/gray}{blurple}▒└─{/blurple}{white}──┘{/white}{blurple}▒▒│{/blurple} {light_blue}│{/light_blue}{gray}·{/gray}{blurple}▒│{/blurple} {light_blue}│{/light_blue}{gray}·{/gray}{blurple}▓{/blurple}{blue}│{/blue}  {light_blue}│{/light_blue}{blurple}▒▒│{/blurple}    {blurple}│▒▒│  {/blurple}
+   {blurple}│░░│{/blurple}{light_blue}└{/light_blue}{gray}──{/gray}{blurple}┐░░│{/blurple} {blurple}│░░┌──{/blurple}{light_blue}┐{/light_blue}{blurple}░░│{/blurple} {gray}│{/gray}{blurple}░░│└{/blurple}{gray}─{/gray}{light_blue}┐{/light_blue}{blurple}░░│{/blurple}    {gray}│{/gray}{blurple}░░┌─┐░░┌─┘{/blurple} {blurple}│░░│{/blurple} {blurple}│░░│{/blurple}  {white}│{/white}{blurple}░░│{/blurple}    {blurple}│░░│  {/blurple}
+   {blurple}│{/blurple}{dark_gray}══{blurple}└─{/blurple}{light_blue}─{/light_blue}{white}─┘{/white}{dark_gray}═{/dark_gray}{blurple}┌┘{/blurple} {blurple}│{/blurple}{dark_gray}══{/dark_gray}{blue}│{/blue}  {white}│{/white}{dark_gray}══{/dark_gray}{blurple}│{/blurple} {blurple}│{/blurple}{dark_gray}══{/dark_gray}{blue}│{/blue}  {white}│{/white}{dark_gray}══{/dark_gray}{blue}│{/blue}    {blurple}│{/blurple}{dark_gray}══{/dark_gray}{blurple}│{/blurple} {blurple}└{/blurple}{white}┐{/white}{dark_gray}═{/dark_gray}{blurple}└─┐{/blurple} {blurple}│{dark_gray}══{/dark_gray}{blue}│{/blue} {blurple}│{/blurple}{dark_gray}══{/dark_gray}{blurple}└─{/blurple}{white}─┘{/white}{dark_gray}══{/dark_gray}│    {blurple}│{dark_gray}══{/dark_gray}{blue}│  {/blue} 
+   {blurple}└────────{/blurple}┘  {blurple}└─{/blurple}{blue}─┘{/blue}  {white}└─{/white}{light_blue}─{/light_blue}{blurple}┘{/blurple} {blurple}└──{/blurple}{blue}┘{/blue}  {white}└─{/white}{blurple}─{/blurple}{blue}┘{/blue}    {blurple}└──┘{/blurple}  {white}└─{/white}{blurple}──┘{/blurple} {blurple}└─{blue}─┘{/blue} {blurple}└──────{/blurple}{blue}──┘{/blue}    {blurple}└{blue}──┘  {/blue} 
+
+        </pre>
+<pre id="ascii-bio">
+        <span>{red}▄▀▀▀ █▀▀▄ ▄▀▀ ▄▀▀ ▀█▀ ▀ █▀▀▄ ▄▀▀▀ ▄▀▀{/red}</span>
+<span>{dark_gray}▄███▓▒░{/dark_gray} {light_red}█ ▀█ █ ▀▄ █▀  █▀   █  █ █  █ █ ▀█  ▀▄{/light_red} {dark_gray}░▒▓█████▓▒░ ░▒▓████████████████▄{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray}      {dark_red}▀▄▄█ █  █ ▀▄▄ ▀▄▄  █  █ █  █ ▀▄▄█ ▄▄▀{/dark_red}                               {dark_gray}██{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray}                                                                          {dark_gray}██{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray} I am Ban RioT a self taught Python and HTML Developer. I develope random {dark_gray}██{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray} Tools, Scripts for different purposes mainly for networking,             {dark_gray}██{/dark_gray}</span>
+<span>{dark_gray}▓█{/dark_gray} cybersecurity and ethical hacking. I do content creation on YouTube      {dark_gray}█▓{/dark_gray}</span>
+<span>{dark_gray}▓▓{/dark_gray} and sometimes I stream on twitch and stream random games                 {dark_gray}▓▓{/dark_gray}</span>
+<span>{dark_gray}▒▒{/dark_gray}                                                                          {dark_gray}▒▒{/dark_gray}</span>
+<span>{dark_gray}░░{/dark_gray} Below under the TOOLS section you can find some of my future and past    {dark_gray}░░{/dark_gray}</span>
+<span>{dark_gray}░ {/dark_gray} projects that ive made or am still working on! {dark_gray} ░{/dark_gray}</span>
+<span>                                                                               </span>
+<span>                                    {red}▀█▀ ▄▀▀ █▀▀▄ █▄ ▄█ ▄▀▀         {/red}</span>
+<span>{dark_gray}░▒▓████████████████▓▒░ ░▒▓██████▓▒░{/dark_gray}  {light_red}█  █▀  █ ▀▄ █ ▀ █  ▀▄ {/light_red}{dark_gray}░▒▓█████████████▓▒░{/dark_gray}</span>
+<span>                                     {dark_red}█  ▀▄▄ █  █ █   █ ▄▄▀          {/dark_red}</span>
+<span>                                                                                 </span>
+<span>{dark_gray}░ {/dark_gray} When using my tools, scripts and toolkits please keep in mind to follow  {dark_gray} ░{/dark_gray}</span>
+<span>{dark_gray}░░{/dark_gray} the law in your jurisdiction. Please follow the rules below when using   {dark_gray}░░{/dark_gray}</span>
+<span>{dark_gray}▒▒{/dark_gray} my tools.                                                                {dark_gray}▒▒{/dark_gray}</span>
+<span>{dark_gray}▒▒{/dark_gray}                                                                          {dark_gray}▒▒{/dark_gray}</span>
+<span>{dark_gray}▓▓{/dark_gray} {red}1.{/red} Only hack with consent. {dark_gray}                                              ▓▓{/dark_gray}</span>
+<span>{dark_gray}█▓{/dark_gray} {red}2.{/red} No malicious use or DDoS. {dark_gray}                                            ▓█{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray} {red}3.{/red} Respect privacy and data integrity. {dark_gray}                                  ██{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray} {red}4.{/red} Follow laws and terms of service. {dark_gray}                                    ██{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray} {red}5.{/red} Report vulnerabilities responsibly. {dark_gray}                                  ██{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray} {red}6.{/red} Be ethical—avoid harm. {dark_gray}                                               ██{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray}                                                                          {dark_gray}██{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray}     {red}▀█▀ ▄▀▀▄ ▄▀▀▄ █   ▄▀▀{/red}                                                {dark_gray}██{/dark_gray}</span>
+<span>{dark_gray}▀██▓▒░ {light_red} █  █  █ █  █ █    ▀▄{/light_red} ░▒▓█████████████████▓▒░ ░▒▓█████████████████████▀</span>
+<span>{dark_gray}       {dark_red} █  ▀▄▄▀ ▀▄▄▀ █▄▄ ▄▄▀ {/dark_red}                                         </span>
+<span>{dark_gray}░ {/dark_gray}                                                                           {dark_gray}░{/dark_gray}</span>
+<span>{dark_gray}░░{/dark_gray}    {orange}<u>NAME                        Version                  STATUS       </u>{/orange}    {dark_gray}░░{/dark_gray}</span>
+<span>{dark_gray}▒▒{/dark_gray}    <a href="https://example.com/patcherv2" target="_blank">PatcherV2</a>                   1.0                      {red}Discontinued{/red}     {dark_gray}▒▒{/dark_gray}</span>
+<span>{dark_gray}▓▓{/dark_gray}                                                                          {dark_gray}▓▓{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray}                                                                          {dark_gray}██{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray}                                                                          {dark_gray}██{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray}                                                                          {dark_gray}██{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray}                                                                          {dark_gray}██{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray}                                                                          {dark_gray}██{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray}                                                                          {dark_gray}██{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray}                                                                          {dark_gray}██{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray}                                                                          {dark_gray}██{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray}                                                                          {dark_gray}██{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray}                                                                          {dark_gray}██{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray}                                                                          {dark_gray}██{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray}                                                                          {dark_gray}██{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray}                                                                          {dark_gray}██{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray}                                                                          {dark_gray}██{/dark_gray}</span>
+<span>{dark_gray}██ ░▒▓██████████████████████████████████████████████████████████████████▓▒░ ██{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray}                                                                          {dark_gray}██{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray}              {red}! Always follow the law and act responsibly. !{/red}              {dark_gray}██{/dark_gray}</span>
+<span>{dark_gray}██{/dark_gray}                                                                          {dark_gray}██{/dark_gray}</span>
+<span>{dark_gray}▀███████████████████████████████████████████████████████████████████████████▀</span>
+</pre>
+    </div>
+
+    <!-- RIGHT: Timeline -->
+    <div class="panel timeline">
+      <div class="timeline-items">
+        <div class="timeline-item">
+          <div class="timeline-header">2025-10-15 - BanRioT</div>
+          <div class="timeline-body">Updated the website with a new ASCII design.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-header">2025-09-30 - BanRioT</div>
+          <div class="timeline-body">Added new tools section and coloring support.</div>
+        </div>
       </div>
-      <div class="path">
-        <code>The Hosts disclaim all responsibility for user actions, as well as any damages or misuse related to the provided files or tools. Use at your own risk.</code>
-      </div>
-      <div class="tabs">
-        <a class="tab-link active" onclick="showTab('toolkits')">[ Toolkits ]</a>
-        <a class="tab-link" onclick="showTab('files')">[ Files ]</a>
-        <a class="tab-link" onclick="showTab('network')">[ Network ]</a>
-        <a class="tab-link" onclick="showTab('recon')">[ Recon ]</a>
-        <a class="tab-link" onclick="showTab('exploits')">[ Exploits ]</a>
-        <a class="tab-link" onclick="showTab('wordlists')">[ Wordlists ]</a>
-      </div>
     </div>
+</div>
 
-    <!-- TOOLKITS TAB -->
-    <div class="tab-content active" id="toolkits">
-      <h1>Toolkits</h1>
-      <p>View all available toolkits we've created.</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Size</th>
-            <th>Modified</th>
-            <th>Permissions</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><a href="#">Diamond.zip</a></td>
-            <td>N/a MB</td>
-            <td>2025-08-01</td>
-            <td>Administrator</td>
-            <td><a href="#">[In development]</a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<!-- Footer -->
+<div class="footer">
+    <pre>Copyright © 2025 BanRioT. All rights reserved.</pre>
+</div>
 
-    <!-- FILES TAB -->
-    <div class="tab-content" id="files">
-      <h1>Files</h1>
-      <p>This tab could list your raw scripts, documents, licenses, or archives.</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Size</th>
-            <th>Modified</th>
-            <th>Permissions</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><a href="#">IP Lookup.py</a></td>
-            <td>N/a MB</td>
-            <td>2025-08-01</td>
-            <td>User</td>
-              <td><a href="https://raw.githubusercontent.com/OpBloody/riots-hub/refs/heads/main/single_files/ip_lookup.py" target="_blank" rel="noopener noreferrer">[Download]</a></td>
-          </tr>
-          <tr>
-            <td><a href="#">Port Scanner.py</a></td>
-            <td>N/a MB</td>
-            <td>2025-08-01</td>
-            <td>User</td>
-              <td><a href="https://raw.githubusercontent.com/OpBloody/riots-hub/refs/heads/main/single_files/port_scanner.py" target="_blank" rel="noopener noreferrer">[Download]</a></td>
-          </tr>
-          <tr>
-            <td><a href="#">DNS Lookup.py</a></td>
-            <td>N/a MB</td>
-            <td>2025-08-01</td>
-            <td>User</td>
-              <td><a href="https://raw.githubusercontent.com/OpBloody/riots-hub/refs/heads/main/single_files/dns_lookup.py" target="_blank" rel="noopener noreferrer">[Download]</a></td>
-          </tr>
-          <tr>
-            <td><a href="#">NSLookup.py</a></td>
-            <td>N/a MB</td>
-            <td>2025-08-01</td>
-            <td>User</td>
-              <td><a href="https://raw.githubusercontent.com/OpBloody/riots-hub/refs/heads/main/single_files/NSLookup.py" target="_blank" rel="noopener noreferrer">[Download]</a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- NETWORK TAB -->
-    <div class="tab-content" id="network">
-      <h1>Network Tools</h1>
-      <p>Include tools like Wireshark captures, TCP dumpers, or packet sniffers here.</p>
-      <p><span class="red-text">There are currently no available Network Tools listed.</span></p>
-    </div>
-
-    <!-- RECON TAB -->
-    <div class="tab-content" id="recon">
-      <h1>Reconnaissance Tools</h1>
-      <p>Tools for gathering information on targets: WHOIS, DNS lookups, etc.</p>
-      <p><span class="red-text">There are currently no available Reconnaissance Tools listed.</span></p>
-    </div>
-
-    <!-- EXPLOITS TAB -->
-    <div class="tab-content" id="exploits">
-      <h1>Exploit Kits</h1>
-      <p>Payloads, Exploits, Scripts, Game exploits, etc.</p>
-      <p><span class="red-text">There are currently no available exploit kits listed.</span></p>
-    </div>
-
-    <!-- WORDLISTS TAB -->
-    <div class="tab-content" id="wordlists">
-      <h1>Wordlists & Dictionaries</h1>
-      <p>RockYou.txt, SecLists, custom password lists, etc.</p>
-      <p><span class="red-text">There are currently no available Wordlists or Dictionaries listed.</span></p>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <p>
-      Any single-file tools that are <strong>not part of a toolkit</strong> may be used and shared freely without credit. They are meant to help others build or improve their own toolkits.<br>
-      However, <strong>toolkit-based tools, custom builds, or anything not published as a single file</strong> are <span class="warning">not allowed</span> to be used in exploit toolkits or redistributed.
-    </p>
-  </footer>
-
-  <script>
-    function showTab(id) {
-      const contents = document.querySelectorAll('.tab-content');
-      const links = document.querySelectorAll('.tab-link');
-
-      contents.forEach(c => c.classList.remove('active'));
-      links.forEach(l => l.classList.remove('active'));
-
-      document.getElementById(id).classList.add('active');
-      event.target.classList.add('active');
-    }
-  </script>
 </body>
 </html>
