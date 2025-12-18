@@ -1,178 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ASCII Art Website</title>
-<style>
-body {
-    background-color: black;
-    color: white;
-    font-family: monospace;
-    margin: 0;
-    padding: 0;
-}
+  <meta charset="UTF-8">
+  <title>Maintenance</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-pre {
-    white-space: pre-wrap; /* preserves spacing but allows inline tags */
-}
-pre span, pre u {
-    display: inline;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
 
-/* Main panels row */
-.panels {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 1rem;
-    max-width: 95%;
-    margin: 20px auto;
-}
+    body {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0f0f0f;
+      color: #eaeaea;
+    }
 
-/* Panels styling */
-.panel {
-    background-color: #111;
-    border: 1px solid #555;
-    padding: 10px;
-    overflow: hidden;
-}
+    .container {
+      text-align: center;
+      max-width: 400px;
+      padding: 24px;
+    }
 
-/* Left / Right panels fixed width */
-.panel.discord, .panel.timeline {
-    width: 300px;
-}
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
 
-/* CENTER ASCII column */
-.ascii-center {
-    flex: 1;
-    max-width: 700px;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    /* preserve ASCII formatting */
-    white-space: pre;
-    /* center the block itself horizontally */
-    align-items: center;
-}
-
-/* Discord iframe */
-.discord-frame {
-    width: 100%;
-    height: 480px;
-    border: 0;
-}
-
-/* Timeline styling */
-.timeline-item {
-    border-bottom: 1px solid #555;
-    padding: 5px 0;
-}
-.timeline-header {
-    color: #ff4040;
-}
-.timeline-body {
-    color: #aaa;
-}
-
-/* Footer */
-.footer {
-    text-align: center;
-    font-size: 16px;
-    margin: 20px 0;
-}
-
-/* Make left and right panels sticky */
-.panel.discord,
-.panel.timeline {
-    position: sticky;
-    top: 20px; /* distance from top of viewport */
-    height: fit-content; /* prevent stretching */
-}
-
-/* Colors */
-.white { color: white; }
-.light_blue { color: #55FFFF; }
-.blurple { color: #5555FF; }
-.blue { color: #0000AA; }
-.gray { color: #AAAAAA; }
-.dark_gray { color: #555555; }
-.red { color: #ff3535; }
-.light_red { color: #FF5555; }
-.dark_red { color: #AA0000; }
-.orange { color: #ff9955; }
-.dark { color: #b4b4b4; }
-.light { color: #c72f2f; }
-.lime { color: #00ff73; }
-
-/* Normal link inside ASCII */
-.ascii-center pre a {
-    color: #2db2ff;      /* unclicked / default color */
-    text-decoration: underline; /* optional */
-}
-
-/* Hovered link */
-.ascii-center pre a:hover {
-    color: #207fb6;      /* color when hovered */
-    text-decoration: underline;
-}
-
-/* Clicked / active link */
-.ascii-center pre a:active {
-    color: #144e70;      /* color when clicked */
-    text-decoration: underline;
-}
-
-</style>
-<script>
-function applyColors(id) {
-    let element = document.getElementById(id);
-    if (!element) return;
-
-    // Get the raw text content
-    let content = element.innerHTML;
-
-    // Replace color tags with span
-    content = content.replace(/{(\w+)}/g, '<span class="$1">')
-                     .replace(/{\/(\w+)}/g, '</span>');
-
-    // Replace underline tags
-    content = content.replace(/{underline}/g, '<u>')
-                     .replace(/{\/underline}/g, '</u>');
-
-    element.innerHTML = content;
-}
-
-function applyAllColors() {
-    applyColors("ascii-name");
-    applyColors("ascii-bio");
-}
-</script>
+    p {
+      font-size: 0.95rem;
+      color: #b5b5b5;
+    }
+  </style>
 </head>
-<body onload="applyAllColors()">
 
-<div class="panels">
-
-    <!-- CENTER: ASCII Name + Bio (not a panel) -->
-    <div class="ascii-center">
-        <pre id="ascii-name">
-   {white}┌▄──{/white}{light_blue}───{/light_blue}{blurple}──┐{/blurple}  {white}┌▄──{/white}{light_blue}───{/light_blue}{blurple}──┐{/blurple} {white}┌▄─{/white}{light_blue}─{/light_blue}{blurple}┐{/blurple} {light_blue}┌{/light_blue}{gray}▄─{/gray}{blurple}┐{/blurple}    {white}┌▄───{/white}{light_blue}──{/light_blue}{gray}─{/gray}{blurple}──┐{/blurple} {white}┌▄{/white}{light_blue}─┐{/light_blue} {white}┌▄──{/white}{light_blue}──{/light_blue}{gray}──{/gray}{blurple}─┐{/blurple} {white}┌▄───{/white}{light_blue}──{/light_blue}{blurple}──┐{/blurple}
-   {white}│{/white}{blurple}▓{/blurple}{gray}·{/gray}{blue}┌─{/blue}{blurple}──┐{/blurple}{gray}·{/gray}{blurple}└┐{/blurple} {white}│{/white}{blurple}▓{/blurple}{gray}·{/gray}{blurple}┌──{/blurple}{light_blue}┐{/light_blue}{blurple}▓{/blurple}{gray}·{/gray}{blurple}│{/blurple} {white}│{/white}{blurple}▓{/blurple}{gray}.{/gray}{blurple}▓└{/blurple}{light_blue}┐{/light_blue}{white}│{/white}{blurple}▓{/blurple}{gray}·{/gray}{blurple}│{/blurple}    {white}│{/white}{blurple}▓▓┌──{/blurple}{gray}─{/gray}{light_blue}┐{/light_blue}{gray}·{/gray}{blurple}▓│{/blurple} {white}│{/white}{blurple}▓▓│{/blurple} {white}│{/white}{blurple}▓{/blurple}{gray}·{/gray}{blue}┌─{/blue}{blurple}─{/blurple}{white}┐{/white}{blurple}▓{/blurple}{gray}·{/gray}{blurple}│{/blurple} {white}└{/white}{blurple}──┐{/blurple}{gray}·{/gray}{blurple}▓┌──┘{/blurple}
-   {light_blue}│{/light_blue}{gray}.{/gray}{blurple}▒{/blurple}{blue}│{/blue}{white}┌{/white}{gray}▄{/gray}{white}─{/white}┘{blurple}▒┌{/blurple}{blue}┘{/blue} {light_blue}│{/light_blue}{gray}·{/gray}{blurple}▒└{/blurple}{light_blue}─{/light_blue}{white}─┘{/white}{blurple}▒▒│{/blurple} {light_blue}│{/light_blue}{gray}.{/gray}{blurple}▓│┐{/blurple}{white}└┘{/white}{blurple}▒▒│{/blurple}    {light_blue}│{/light_blue}{gray}·{/gray}{blurple}▒└─{/blurple}{white}──┘{/white}{blurple}▒▒│{/blurple} {light_blue}│{/light_blue}{gray}·{/gray}{blurple}▒│{/blurple} {light_blue}│{/light_blue}{gray}·{/gray}{blurple}▓{/blurple}{blue}│{/blue}  {light_blue}│{/light_blue}{blurple}▒▒│{/blurple}    {blurple}│▒▒│  {/blurple}
-   {blurple}│░░│{/blurple}{light_blue}└{/light_blue}{gray}──{/gray}{blurple}┐░░│{/blurple} {blurple}│░░┌──{/blurple}{light_blue}┐{/light_blue}{blurple}░░│{/blurple} {gray}│{/gray}{blurple}░░│└{/blurple}{gray}─{/gray}{light_blue}┐{/light_blue}{blurple}░░│{/blurple}    {gray}│{/gray}{blurple}░░┌─┐░░┌─┘{/blurple} {blurple}│░░│{/blurple} {blurple}│░░│{/blurple}  {white}│{/white}{blurple}░░│{/blurple}    {blurple}│░░│  {/blurple}
-   {blurple}│{/blurple}{dark_gray}══{blurple}└─{/blurple}{light_blue}─{/light_blue}{white}─┘{/white}{dark_gray}═{/dark_gray}{blurple}┌┘{/blurple} {blurple}│{/blurple}{dark_gray}══{/dark_gray}{blue}│{/blue}  {white}│{/white}{dark_gray}══{/dark_gray}{blurple}│{/blurple} {blurple}│{/blurple}{dark_gray}══{/dark_gray}{blue}│{/blue}  {white}│{/white}{dark_gray}══{/dark_gray}{blue}│{/blue}    {blurple}│{/blurple}{dark_gray}══{/dark_gray}{blurple}│{/blurple} {blurple}└{/blurple}{white}┐{/white}{dark_gray}═{/dark_gray}{blurple}└─┐{/blurple} {blurple}│{dark_gray}══{/dark_gray}{blue}│{/blue} {blurple}│{/blurple}{dark_gray}══{/dark_gray}{blurple}└─{/blurple}{white}─┘{/white}{dark_gray}══{/dark_gray}│    {blurple}│{dark_gray}══{/dark_gray}{blue}│  {/blue} 
-   {blurple}└────────{/blurple}┘  {blurple}└─{/blurple}{blue}─┘{/blue}  {white}└─{/white}{light_blue}─{/light_blue}{blurple}┘{/blurple} {blurple}└──{/blurple}{blue}┘{/blue}  {white}└─{/white}{blurple}─{/blurple}{blue}┘{/blue}    {blurple}└──┘{/blurple}  {white}└─{/white}{blurple}──┘{/blurple} {blurple}└─{blue}─┘{/blue} {blurple}└──────{/blurple}{blue}──┘{/blue}    {blurple}└{blue}──┘  {/blue} 
-
-        </pre>
-<pre id="ascii-bio">
-{dark_red}╻ ╻┏━┓╻ ╻   {red}ERROR 404{white}: Page not found
-{dark_red}┗━┫┃┃┃┗━┫   
-{dark_red}  ╹┗━┛  ╹   {gray}Woah It looks like you traveled to far or you broke something...
-
-            Head back to safety <a href="https://opbloody.github.io/riots-hub/#">here</a>.
-</pre>
-    </div>
+<body>
+  <div class="container">
+    <h1>❌ Temporarily unavailable.</h1>
+    <p>The site is currently undergoing maintenance. <br>Please check back later.</p>
+  </div>
 </body>
 </html>
-
